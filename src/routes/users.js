@@ -4,12 +4,14 @@ const router = express.Router();
 const mysqlConnection  = require('../database/index');
 
 router.get('/', (req,res) => {
-    mysqlConnection.query('SELECT * FROM Persona', (err, rows,fields) => {
+    mysqlConnection.query('SELECT * FROM Tercero;', (err, rows,fields) => {
         try{
-
+            res.json(rows);
         }catch(error){
             if(!err){
-                res.json(rows);
+                console.log(rows);
+                
+                
             }
             else {
                 console.log(err);
@@ -18,6 +20,10 @@ router.get('/', (req,res) => {
         }
     });
 });
+
+// router.get('/', (req,res) =>{
+//     res.send('hola  mundo');
+// })
 
 
 module.exports = router;

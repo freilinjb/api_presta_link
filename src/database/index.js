@@ -4,7 +4,7 @@ const mysqlConnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'fre123i4',
-    database: 'company'
+    database: 'presta_link'
 });
 
 mysqlConnection.connect(function(err) {

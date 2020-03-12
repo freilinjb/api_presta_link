@@ -1,26 +1,23 @@
 const express = require('express');
 const router = express.Router();
+const controller = require('../controllers/clientes')
 
 const mysqlConnection  = require('../database/index');
 
 router.get('/', (req,res) => {
     mysqlConnection.query('SELECT * FROM Persona;', (err, rows,fields) => {
-        try{
-            res.statusCode = 200;
+        if(!err){
             res.json(rows);
-        }catch(error){
-            if(!err){
-                console.log(rows);
-                
-                
-            }
-            else {
-                console.log(err);
-                console.log(error);
-            }
         }
+        else{
+            res.json({
+                mensaje : err
+            });
+        }
+        
     });
 });
+router.get('/Cliente', controller.list);
 
 router.get('/:id', (req, res) => {
     const { id } = req.params;
@@ -33,6 +30,8 @@ router.get('/:id', (req, res) => {
         }
     });
 });
+
+router.get('/Cliente/:id', controller.edit);
 
 
 // router.get('/', (req,res) =>{

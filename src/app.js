@@ -9,6 +9,7 @@ app.use(express.json());
 
 //Routes
 app.use(require('./routes/users'));
+app.use('/users',require('./routes/users'));
 
 
 //middlewares
